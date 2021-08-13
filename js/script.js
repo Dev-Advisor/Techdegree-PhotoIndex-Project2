@@ -25,14 +25,14 @@ function showPage(list, page) {
 let startIndex =(page * itemsPerPage) - itemsPerPage
 let endIndex = page * itemsPerPage;
     
-let studentList = document.querySelector('student-list');
+let studentList = document.querySelectorAll('student-list');
    
-studentList.innerHTML= "";
+studentList.innerHTML= " ";
    
 
 for(let i=0; i< list.length + itemsPerPage; i++){
    if(i >= startIndex && i < endIndex){
-   studentList.insertAdjacentHTML( beforeend, `
+   studentList.innerHTML +=`
    <li class="student-item cf">
       <div class="student-details">
          <img class="avatar" src=${list[i].picture.thumbnail}alt="Profile Picture">
@@ -42,7 +42,7 @@ for(let i=0; i< list.length + itemsPerPage; i++){
       <div class="joined-details">
          <span class="date">Joined ${list[i].registered.date}</span>
       </div>
-   </li> `);
+   </li> `
          
          }
       
@@ -55,27 +55,31 @@ This function will create and insert/append the elements needed for the paginati
 */
 
 function pagination(list){
-   let pageNumber = 5
-   let pageitem = document.querySelector('link-list')
-   pageitem.innerHTML = " ";
-   let button = getElementsByTagName(button);
+   let pageNumber = Math.ceil(list.length/9);
+   let pageitem = document.querySelectorAll('link-list');
+   pageItem.innerHTML = " ";
+   
   
    for(i = 0; i > pageNumber; i++){
-      pageitem.insertAdjacentHTML(beforeend, 
+      pageItem.innerHTML +=
           `
           <li>
-          <button type="button">1</button>
+          <button type="button">${i + 1}</button>
          </li>
          `
-       ); 
+         
        }
-       pageitem.addEventListener('click', (event) => {
-          button.classlist.remove('active');
-          event = event.target;
-          event.classList.add('active');
-        });
+   pageItem.addEventListener('click', (event) => {
+      let button = getElementsByTagName(button);
+      button.classlist.remove('active');
+      event = event.target;
+      event.classList.add('active');
+       }); 
   }
-
+}
 
 
 // Call functions
+
+showPage(data,1);
+pagination(data);
