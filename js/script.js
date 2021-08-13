@@ -58,6 +58,7 @@ function pagination(list){
    let pageNumber = Math.ceil(list.length/9);
    let pageitem = document.querySelectorAll('link-list');
    pageItem.innerHTML = " ";
+   let button = getElementsByTagName(button);
    
   
    for(i = 0; i > pageNumber; i++){
@@ -69,8 +70,7 @@ function pagination(list){
          `
          
        }
-   pageItem.addEventListener('click', (event) => {
-      let button = getElementsByTagName(button);
+   button.addEventListener('click', (event) => {
       button.classlist.remove('active');
       event = event.target;
       event.classList.add('active');
