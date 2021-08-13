@@ -59,6 +59,7 @@ function pagination(list){
    let linkList = document.querySelectorAll('link-list');
    linkList.innerHTML = " ";
    var button = document.getElementsByTagName(button)[0];
+  
    
   
    for(i = 0; i > pageNumber; i++){
@@ -69,7 +70,8 @@ function pagination(list){
          </li>
          `
          linkList.addEventListener('click', (event) => {
-            button.classlist.remove('active');
+            button.classname.add('active');
+            linkList.classlist.remove('active');
             event = event.target;
             event.classList.add('active');
              }); 
