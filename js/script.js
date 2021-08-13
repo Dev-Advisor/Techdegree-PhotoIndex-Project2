@@ -47,7 +47,7 @@ for(let i=0; i< list.length + itemsPerPage; i++){
          }
       
   }
-
+}
 
 /*
 Create the `addPagination` function
@@ -56,27 +56,27 @@ This function will create and insert/append the elements needed for the paginati
 
 function pagination(list){
    let pageNumber = Math.ceil(list.length/9);
-   let pageitem = document.querySelectorAll('link-list');
-   pageItem.innerHTML = " ";
-   let button = getElementsByTagName(button);
+   let linkList = document.querySelectorAll('link-list');
+   linkList.innerHTML = " ";
+   var button = document.getElementsByTagName(button)[0];
    
   
    for(i = 0; i > pageNumber; i++){
-      pageItem.innerHTML +=
+      linkList.innerHTML +=
           `
           <li>
           <button type="button">${i + 1}</button>
          </li>
          `
-         
+         linkList.addEventListener('click', (event) => {
+            button.classlist.remove('active');
+            event = event.target;
+            event.classList.add('active');
+             }); 
        }
-   button.addEventListener('click', (event) => {
-      button.classlist.remove('active');
-      event = event.target;
-      event.classList.add('active');
-       }); 
+   
   }
-}
+
 
 
 // Call functions
