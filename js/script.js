@@ -70,8 +70,8 @@ function pagination(list){
          </li>
          `
          linkList.addEventListener('click', (event) => {
-            button.classname.add('active');
             linkList.classlist.remove('active');
+            button.classname.add('active');
             event = event.target;
             event.classList.add('active');
              }); 
@@ -85,3 +85,4 @@ function pagination(list){
 
 showPage(data,1);
 pagination(data);
+console.log("no errors");
