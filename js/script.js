@@ -25,7 +25,7 @@ function showPage(list, page) {
 let startIndex =(page * itemsPerPage) - itemsPerPage
 let endIndex = page * itemsPerPage;
     
-let studentList = document.querySelectorAll('student-list');
+let studentList = document.querySelector('.student-list');
    
 studentList.innerHTML= " ";
    
@@ -35,9 +35,9 @@ for(let i=0; i< list.length + itemsPerPage; i++){
    studentList.innerHTML +=`
    <li class="student-item cf">
       <div class="student-details">
-         <img class="avatar" src=${list[i].picture.thumbnail}alt="Profile Picture">
+         <img class="avatar" src=${list[i].picture.thumbnail} alt="Profile Picture">
          <h3>${list[i].name.first} ${list[i].name.last}</h3>
-         <span class="email">${list[i].email}/span>
+         <span class="email">${list[i].email}</span>
       </div>
       <div class="joined-details">
          <span class="date">Joined ${list[i].registered.date}</span>
@@ -56,7 +56,7 @@ This function will create and insert/append the elements needed for the paginati
 
 function pagination(list){
    let pageNumber = Math.ceil(list.length/9);
-   let linkList = document.querySelectorAll('link-list');
+   let linkList = document.querySelector('.link-list');
    linkList.innerHTML = " ";
    var button = document.getElementsByTagName(button)[0];
   
