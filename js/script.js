@@ -62,7 +62,7 @@ function pagination(list){
   
    
   
-   for(i = 0; i > pageNumber; i++){
+   for(i = 0; i < pageNumber; i++){
       linkList.innerHTML +=
           `
           <li>
