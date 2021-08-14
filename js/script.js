@@ -35,7 +35,7 @@ for(let i=0; i< list.length + itemsPerPage; i++){
    studentList.innerHTML +=`
    <li class="student-item cf">
       <div class="student-details">
-         <img class="avatar" src=${list[i].picture.thumbnail} alt="Profile Picture">
+         <img class="avatar" src="${list[i].picture.large}" alt="Profile Picture">
          <h3>${list[i].name.first} ${list[i].name.last}</h3>
          <span class="email">${list[i].email}</span>
       </div>
@@ -57,24 +57,40 @@ This function will create and insert/append the elements needed for the paginati
 function pagination(list){
    let pageNumber = Math.ceil(list.length/9);
    let linkList = document.querySelector('.link-list');
+   linkList.innerHTML = " ";
+   
   
    
-  for(i = 0; i < pageNumber; i++){
-      let button = document.createElement('button');
-      button.innerText = i + 1;
-      button.addEventListener('click',(event)=>{
-         let event = event.target
-         if (event.target === 'button'){
-            event.classList.add('active');
-         } else {
-            button[i].classList.remove('active');
-         }
-      })     
-      
-      
-         
+  
+   for(i = 0; i < pageNumber; i++){
+      linkList.innerHTML +=
+          `
+          <li>
+          <button type="button">${i + 1}</button>
+         </li>
+         `
+        
        }
-    linkListappendChild(button)
+       
+    
+    linkList.getElementsByTagName('button').length > 0 ? linkList.getElementsByTagName('button')[0].classList.add("active") : linkList.innerHTML = " "
+    let buttons = linkList.getElementsByTagName('button');
+    
+   function btnAction(event){
+      for(let i = 0; i < buttons.length; i++){
+        buttons[i].classList.remove('active');
+      }
+      event = event.target;
+      
+     event.classList.add('active')
+  }
+
+   linkList.addEventListener('click', (event) => {
+       if(event.target.tagName === 'BUTTON'){
+         showPage(list,event.target.textContent)
+         btnAction(event)
+          } 
+      }) 
   }
 
 
@@ -83,4 +99,3 @@ function pagination(list){
 
 showPage(data,1);
 pagination(data);
-console.log("no errors");
