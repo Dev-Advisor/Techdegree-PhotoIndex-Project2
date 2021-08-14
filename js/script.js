@@ -57,26 +57,24 @@ This function will create and insert/append the elements needed for the paginati
 function pagination(list){
    let pageNumber = Math.ceil(list.length/9);
    let linkList = document.querySelector('.link-list');
-   linkList.innerHTML = " ";
-   var button = document.getElementsByTagName(button)[0];
   
    
-  
-   for(i = 0; i < pageNumber; i++){
-      linkList.innerHTML +=
-          `
-          <li>
-          <button type="button">${i + 1}</button>
-         </li>
-         `
-         linkList.addEventListener('click', (event) => {
-            linkList.classlist.remove('active');
-            button.classname.add('active');
-            event = event.target;
+  for(i = 0; i < pageNumber; i++){
+      let button = document.createElement('button');
+      button.innerText = i + 1;
+      button.addEventListener('click',(event)=>{
+         let event = event.target
+         if (event.target === 'button'){
             event.classList.add('active');
-             }); 
+         } else {
+            button[i].classList.remove('active');
+         }
+      })     
+      
+      
+         
        }
-   
+    linkListappendChild(button)
   }
 
 
