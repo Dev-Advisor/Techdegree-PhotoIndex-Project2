@@ -13,15 +13,19 @@ For assistance:
 
 
 
+
+
+/* Varible for items per page for function */
+let itemsPerPage = 9;
+
 /*
 Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
-let itemsPerPage = 9;
-
 
 function showPage(list, page) {
-    
+
+/* Varibles to be used in function*/  
 let startIndex =(page * itemsPerPage) - itemsPerPage
 let endIndex = page * itemsPerPage;
     
@@ -29,7 +33,7 @@ let studentList = document.querySelector('.student-list');
    
 studentList.innerHTML= " ";
    
-
+/* Looping through data and creating student cards*/
 for(let i=0; i< list.length + itemsPerPage; i++){
    if(i >= startIndex && i < endIndex){
    studentList.innerHTML +=`
@@ -55,13 +59,14 @@ This function will create and insert/append the elements needed for the paginati
 */
 
 function pagination(list){
+   /* Varibles to be used in function*/
    let pageNumber = Math.ceil(list.length/9);
    let linkList = document.querySelector('.link-list');
    linkList.innerHTML = " ";
    
   
    
-  
+   /* Looping through pageNumber and creating buttons */
    for(i = 0; i < pageNumber; i++){
       linkList.innerHTML +=
           `
@@ -72,10 +77,11 @@ function pagination(list){
         
        }
        
-    
+    /* Varibles and ternary operator for adding active to inial button */
     linkList.getElementsByTagName('button').length > 0 ? linkList.getElementsByTagName('button')[0].classList.add("active") : linkList.innerHTML = " "
     let buttons = linkList.getElementsByTagName('button');
-    
+
+    /* Function to remove and add active to button */
    function btnAction(event){
       for(let i = 0; i < buttons.length; i++){
         buttons[i].classList.remove('active');
@@ -84,10 +90,10 @@ function pagination(list){
       
      event.classList.add('active')
   }
-
+   /* Event Listener for pagination buttons */
    linkList.addEventListener('click', (event) => {
        if(event.target.tagName === 'BUTTON'){
-         showPage(list,event.target.textContent)
+         showPage(data,event.target.textContent)
          btnAction(event)
           } 
       }) 
